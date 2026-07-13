@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Discotecha · Paros",
     description: "No matter the question, Paros is always the answer. 21+. Members and guests only.",
-    images: ["/images/eye.png"],
+    images: ["/images/eye.webp"],
     type: "website",
   },
   robots: { index: true, follow: true },

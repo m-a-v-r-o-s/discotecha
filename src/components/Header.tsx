@@ -11,6 +11,11 @@ const NAV = [
   { href: "/#room", label: "The room" },
 ];
 
+const SOCIAL = [
+  { href: "https://www.instagram.com/", label: "Instagram" },
+  { href: "https://wa.me/306942601351", label: "WhatsApp" },
+];
+
 export default function Header() {
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
@@ -34,7 +39,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10">
         <Link href="/" aria-label="Discotecha, home" className="shrink-0">
           <Image
-            src="/images/wordmark-cut.png"
+            src="/images/wordmark-cut.webp"
             alt="Discotecha"
             width={471}
             height={127}
@@ -53,12 +58,17 @@ export default function Header() {
               {n.label}
             </Link>
           ))}
-          <Link
-            href="/reserve"
-            className="border border-signal px-5 py-2.5 text-[10px] font-semibold uppercase tracking-door text-signal transition-colors duration-300 hover:bg-signal hover:text-ink"
-          >
-            Reserve
-          </Link>
+          {SOCIAL.map((s) => (
+            <a
+              key={s.href}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] font-semibold uppercase tracking-door text-bone/70 transition-colors hover:text-signal"
+            >
+              {s.label}
+            </a>
+          ))}
         </nav>
 
         <button
@@ -94,6 +104,17 @@ export default function Header() {
             >
               {n.label}
             </Link>
+          ))}
+          {SOCIAL.map((s) => (
+            <a
+              key={s.href}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-3 text-[13px] font-semibold uppercase tracking-[0.16em] text-bone/80"
+            >
+              {s.label}
+            </a>
           ))}
         </nav>
       </div>

@@ -27,9 +27,9 @@ const RULES = [
 ];
 
 const ROOM = [
-  { src: "/images/neon-stairs.png", alt: "The stairs down into the club, lit in red" },
-  { src: "/images/red-sun.png", alt: "A dancer silhouetted against a red light disc" },
-  { src: "/images/red-bar.png", alt: "Bar stools against a red-lit wall" },
+  { src: "/images/neon-stairs.webp", alt: "The stairs down into the club, lit in red" },
+  { src: "/images/red-sun.webp", alt: "A dancer silhouetted against a red light disc" },
+  { src: "/images/red-bar.webp", alt: "Bar stools against a red-lit wall" },
 ];
 
 export default function Home() {
@@ -44,7 +44,7 @@ export default function Home() {
           <Reveal>
             <div className="relative aspect-[3/4] overflow-hidden">
               <Image
-                src="/images/window-couple.png"
+                src="/images/window-couple.webp"
                 alt="Two people in a shuttered window in the Cyclades"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -254,7 +254,7 @@ export default function Home() {
         {/* ── Closing ───────────────────────────────────────────── */}
         <section className="relative overflow-hidden border-t border-bone/10">
           <Image
-            src="/images/wordmark-gradient.png"
+            src="/images/wordmark-gradient.webp"
             alt=""
             fill
             sizes="100vw"

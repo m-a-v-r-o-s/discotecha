@@ -36,7 +36,7 @@ export default function Hero() {
       <div
         ref={plate}
         className="absolute inset-0 scale-110 bg-cover bg-center transition-transform duration-[900ms] ease-out"
-        style={{ backgroundImage: "url(/images/eye.png)" }}
+        style={{ backgroundImage: "url(/images/eye.webp)" }}
         aria-hidden
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-ink/70" aria-hidden />

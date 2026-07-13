@@ -11,7 +11,7 @@ export default function DiscoBall({ className = "" }: { className?: string }) {
       className={`overflow-hidden rounded-full bg-ink shadow-[0_0_40px_rgba(255,42,0,0.25)] ring-1 ring-bone/15 ${className}`}
     >
       <Image
-        src="/images/igglobe.png"
+        src="/images/igglobe.webp"
         alt=""
         width={128}
         height={128}

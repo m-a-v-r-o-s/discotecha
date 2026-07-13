@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="flex items-start justify-between gap-8 md:col-span-2">
             <div>
               <Image
-                src="/images/wordmark-cut.png"
+                src="/images/wordmark-cut.webp"
                 alt="Discotecha"
                 width={471}
                 height={127}

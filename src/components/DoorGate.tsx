@@ -1,7 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import Wordmark from "./Wordmark";
 
 const COOKIE = "dsc_door";
 const MIN_AGE = 21;
@@ -82,13 +82,20 @@ export default function DoorGate() {
       <div
         ref={eyeRef}
         className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.55] transition-transform duration-500 ease-out"
-        style={{ backgroundImage: "url(/images/eye.png)" }}
+        style={{ backgroundImage: "url(/images/eye.webp)" }}
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/85" aria-hidden />
 
       <div className="relative w-full max-w-md px-7 text-center">
-        <Wordmark className="mx-auto mb-10 w-56" fontSize={78} />
+        <Image
+          src="/images/wordmark-cut.webp"
+          alt="Discotecha"
+          width={471}
+          height={127}
+          priority
+          className="mx-auto mb-10 h-auto w-56"
+        />
 
         <p className="mb-1 text-[10px] font-semibold uppercase tracking-door text-signal">
           Members &amp; guests only

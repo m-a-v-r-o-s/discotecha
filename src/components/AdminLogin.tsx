@@ -31,7 +31,7 @@ export default function AdminLogin() {
     <div className="flex min-h-screen items-center justify-center px-6">
       <div className="w-full max-w-sm text-center">
         <Image
-          src="/images/wordmark-cut.png"
+          src="/images/wordmark-cut.webp"
           alt="Discotecha"
           width={471}
           height={127}

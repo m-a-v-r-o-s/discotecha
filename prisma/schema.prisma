@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Reservation {
+  id        String   @id @default(cuid())
+  reference String   @unique
+
+  // TABLE (deposit, Stripe) | GUESTLIST (request, admin approves)
+  kind      String
+  status    String   @default("PENDING") // PENDING | CONFIRMED | DECLINED | CANCELLED
+
+  eventDate String // ISO date, e.g. "2026-07-24"
+  eventName String
+
+  name      String
+  email     String
+  phone     String
+  instagram String?
+  guests    Int      @default(2)
+  note      String?
+
+  // Table only
+  tierId       String?
+  minimumSpend Int? // euros
+  deposit      Int? // euros
+  paid         Boolean @default(false)
+
+  stripeSessionId String?
+  inviteCode      String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([eventDate])
+  @@index([status])
+}

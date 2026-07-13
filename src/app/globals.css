@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --signal: #ff2a00;
+  --bone: #edeae4;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #000;
+}
+
+body {
+  background: #000;
+  color: var(--bone);
+  font-feature-settings: "ss01", "cv01";
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--signal);
+  color: #000;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+/* ── Grain: the whole site is shot on film ─────────────────────── */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  animation: grainshift 700ms steps(3) infinite;
+}
+
+@keyframes grainshift {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-2%, 1%); }
+  66% { transform: translate(1%, -2%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ── Photography treatment: monochrome, crushed blacks ─────────── */
+.plate {
+  filter: grayscale(1) contrast(1.18) brightness(0.86);
+  transition: filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.plate-hot {
+  filter: none;
+}
+
+/* ── The rule that connects a date to a name, like the flyer ───── */
+.leader {
+  flex: 1 1 auto;
+  height: 1px;
+  min-width: 24px;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+/* ── Marquee ───────────────────────────────────────────────────── */
+.ticker {
+  display: flex;
+  width: max-content;
+  animation: slide 38s linear infinite;
+}
+
+@keyframes slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── Scroll reveal ─────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 1000ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.seen {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Form fields: hairline, no chrome ──────────────────────────── */
+.field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(237, 234, 228, 0.22);
+  padding: 12px 0;
+  color: var(--bone);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  transition: border-color 300ms ease;
+}
+
+.field::placeholder {
+  color: rgba(237, 234, 228, 0.3);
+}
+
+.field:focus {
+  outline: none;
+  border-bottom-color: var(--signal);
+}
+
+select.field option {
+  background: #000;
+  color: var(--bone);
+}
+
+textarea.field {
+  resize: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

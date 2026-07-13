@@ -175,14 +175,14 @@ export default function ReserveForm({
                         tierId === t.id ? "text-ink/70" : "text-ash"
                       }`}
                     >
-                      {t.seats} guests · €{t.minimumSpend} minimum
+                      {t.seats} guests · TBD minimum
                     </span>
                   </span>
                   <span className="shrink-0 text-right">
                     <span className="block text-[10px] uppercase tracking-door opacity-60">
                       Deposit
                     </span>
-                    <span className="block text-[15px] font-semibold">€{t.deposit}</span>
+                    <span className="block text-[15px] font-semibold">TBD</span>
                   </span>
                 </button>
               ))}
@@ -279,7 +279,7 @@ export default function ReserveForm({
           {busy
             ? "One moment"
             : kind === "TABLE"
-              ? `Pay €${tier?.deposit ?? 0} deposit and hold the table`
+              ? "Hold the table"
               : "Send the request"}
         </button>
 

@@ -73,8 +73,8 @@ export default async function ReceivedPage({
               ...(isTable
                 ? ([
                     ["Table", reservation.tierId?.toUpperCase() ?? "Not set"],
-                    ["Minimum spend", `€${reservation.minimumSpend ?? 0}`],
-                    ["Deposit", `€${reservation.deposit ?? 0} ${reservation.paid ? "· paid" : "· pending"}`],
+                    ["Minimum spend", "TBD"],
+                    ["Deposit", "TBD"],
                   ] as [string, string][])
                 : []),
               ["Status", reservation.status],

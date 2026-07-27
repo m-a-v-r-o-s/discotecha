@@ -1,85 +1,96 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 import Ticker from "./Ticker";
 import Globe3D from "./Globe3D";
 import { upcomingEvents, formatDate } from "@/lib/events";
 
+const KICKER = "Members & guests only · 21+";
+
 export default function Hero() {
-  const plate = useRef<HTMLDivElement>(null);
   const next = upcomingEvents()[0];
-
-  useEffect(() => {
-    const el = plate.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let raf = 0;
-    const onMove = (e: MouseEvent) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const x = (e.clientX / window.innerWidth - 0.5) * -30;
-        const y = (e.clientY / window.innerHeight - 0.5) * -22;
-        el.style.transform = `scale(1.1) translate3d(${x}px, ${y}px, 0)`;
-      });
-    };
-    window.addEventListener("mousemove", onMove);
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
 
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink">
+      {/* Two crops of the same 35mm frame: a 16:9 band for desktop, and a 2:3
+          crop centred on the dancing figure for portrait viewports. */}
       <div
-        ref={plate}
-        className="absolute inset-0 scale-110 bg-cover bg-center transition-transform duration-[900ms] ease-out"
-        style={{ backgroundImage: "url(/images/eye.webp)" }}
+        className="absolute inset-0 bg-[url('/images/crowd.webp')] bg-cover bg-center md:bg-[url('/images/crowd-wide.webp')]"
         aria-hidden
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-ink/70" aria-hidden />
+      {/* This frame is busy edge to edge — no dark field of its own — so the
+          scrim has to build the type's field: heavy left, easing off to the
+          right where the crowd stays legible. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/35" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-ink/55" aria-hidden />
+      {/* Portrait crop puts the crowd directly behind the type, so below md it
+          needs a flat extra stop that desktop doesn't. */}
+      <div className="absolute inset-0 bg-ink/45 md:hidden" aria-hidden />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-6 pb-14 pt-28 md:justify-between md:px-10 md:pb-20 md:pt-32">
-        {/* On mobile the ball is the centrepiece; on desktop it rides the top-right eyebrow */}
+      <div className="relative z-40 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-6 pb-14 md:px-10 md:pb-12">
+        {/* The mirror ball hangs from the ceiling on a cable that starts at the
+            very top of the page — the container carries no top padding, and the
+            ball is the first thing in it. Kept in flow rather than absolute:
+            on a short laptop an absolute ball punches straight through the
+            headline, whereas in flow the stack below simply moves down.
+            At lg the box is the header logo's own width, so centring inside it
+            drops the ball on the logo's centre line. Only the cable is inert —
+            the ball itself has to stay grabbable. */}
         <div
-          className="flex animate-rise items-center justify-center gap-6 opacity-0 md:justify-between"
-          style={{ animationDelay: "80ms" }}
+          className="flex w-full animate-rise flex-col items-center opacity-0 lg:w-44"
+          style={{ animationDelay: "200ms" }}
         >
-          <span className="hidden text-[10px] font-semibold uppercase tracking-door text-signal md:block">
-            Members &amp; guests only · 21+
-          </span>
-          <Globe3D className="h-40 w-40 shrink-0 md:h-32 md:w-32 lg:h-40 lg:w-40" />
+          {/* Cable length is the ball's drop. It lengthens only when the
+              viewport is tall enough to spend the pixels — on a short laptop
+              the whole stack is already fighting for room. */}
+          <span
+            className="pointer-events-none h-32 w-px bg-bone/20 lg:h-12 lg:[@media(min-height:860px)]:h-28"
+            aria-hidden
+          />
+          <Globe3D className="h-40 w-40 lg:h-28 lg:w-28 xl:h-36 xl:w-36" />
         </div>
 
-        <h1
-          className="mt-9 max-w-3xl animate-rise text-center text-[34px] font-extrabold uppercase leading-[0.92] tracking-tightest text-bone opacity-0 sm:text-[52px] md:mt-0 md:text-left md:text-[74px]"
-          style={{ animationDelay: "160ms" }}
+        {/* Everything else sinks to the floor of the frame */}
+        <div className="flex-1" />
+
+        {/* The kicker belongs with the headline, in the black column — the
+            top-right corner is where the light shaft blows out. */}
+        <p
+          className="mb-6 mt-6 animate-rise text-center text-[10px] font-semibold uppercase tracking-door text-signal opacity-0 md:text-left"
+          style={{ animationDelay: "120ms" }}
         >
-          No matter the question,
+          {KICKER}
+        </p>
+
+        <h1
+          className="animate-rise text-center text-[clamp(40px,8.5vw,96px)] font-extrabold uppercase leading-[0.9] tracking-tightest text-bone opacity-0 md:max-w-5xl md:text-left"
+          style={{ animationDelay: "240ms" }}
+        >
+          Whatever
+          <br className="hidden md:inline" /> the night asks,
           <br />
-          <span className="text-signal">Paros</span> is always the answer.
+          the <span className="text-signal">floor</span> answers.
         </h1>
 
         <div
-          className="mt-10 flex animate-rise flex-col items-center gap-6 text-center opacity-0 md:mt-0 md:flex-row md:items-end md:justify-between md:text-left"
-          style={{ animationDelay: "320ms" }}
+          className="mt-10 flex animate-rise flex-col items-center gap-7 border-t border-bone/15 pt-7 text-center opacity-0 md:mt-8 md:flex-row md:items-end md:justify-between md:text-left"
+          style={{ animationDelay: "400ms" }}
         >
-          <p className="mx-auto max-w-sm text-[11px] font-medium uppercase leading-relaxed tracking-[0.16em] text-bone/60 md:mx-0">
-            A private club on Paros. Twenty-one and over. No list, no entry. Find us on the
+          <p className="max-w-sm text-[11px] font-medium uppercase leading-relaxed tracking-[0.16em] text-bone/60">
+            A private club on Ios. Twenty-one and over. No list, no entry. Find us on the
             map, the door does the rest.
           </p>
 
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center">
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center md:gap-7">
             {next && (
               <span className="text-[10px] font-semibold uppercase tracking-door text-bone/50">
-                Next · {formatDate(next.date).long} · <span className="text-bone">{next.artists}</span>
+                Next · {formatDate(next.date).long} ·{" "}
+                <span className="text-bone">{next.artists}</span>
               </span>
             )}
             <Link
               href="/reserve"
-              className="border border-signal bg-signal px-8 py-4 text-[11px] font-extrabold uppercase tracking-door text-ink transition-colors duration-300 hover:bg-transparent hover:text-signal"
+              className="border border-signal bg-signal px-10 py-4 text-[11px] font-extrabold uppercase tracking-door text-ink transition-colors duration-300 hover:bg-transparent hover:text-signal"
             >
               Reserve
             </Link>

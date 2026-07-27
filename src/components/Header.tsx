@@ -1,19 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Logo from "./Logo";
 
 const NAV = [
   { href: "/#lineup", label: "Line up" },
   { href: "/#rules", label: "Door policy" },
   { href: "/#room", label: "The room" },
-];
-
-const SOCIAL = [
-  { href: "https://www.instagram.com/", label: "Instagram" },
-  { href: "https://wa.me/306942601351", label: "WhatsApp" },
 ];
 
 export default function Header() {
@@ -37,15 +32,8 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10">
-        <Link href="/" aria-label="Discotecha, home" className="shrink-0">
-          <Image
-            src="/images/wordmark-cut.webp"
-            alt="Discotecha"
-            width={471}
-            height={127}
-            priority
-            className="h-auto w-28 md:w-32"
-          />
+        <Link href="/" aria-label="Nocturne, home" className="shrink-0">
+          <Logo className="h-auto w-40 md:w-44" />
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex">
@@ -57,17 +45,6 @@ export default function Header() {
             >
               {n.label}
             </Link>
-          ))}
-          {SOCIAL.map((s) => (
-            <a
-              key={s.href}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[10px] font-semibold uppercase tracking-door text-bone/70 transition-colors hover:text-signal"
-            >
-              {s.label}
-            </a>
           ))}
         </nav>
 
@@ -104,17 +81,6 @@ export default function Header() {
             >
               {n.label}
             </Link>
-          ))}
-          {SOCIAL.map((s) => (
-            <a
-              key={s.href}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="py-3 text-[13px] font-semibold uppercase tracking-[0.16em] text-bone/80"
-            >
-              {s.label}
-            </a>
           ))}
         </nav>
       </div>

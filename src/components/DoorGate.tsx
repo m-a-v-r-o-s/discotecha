@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import Wordmark from "./Wordmark";
 
-const COOKIE = "dsc_door";
+const COOKIE = "club_door";
 const MIN_AGE = 21;
 
 function hasPassed() {
@@ -26,7 +26,7 @@ export default function DoorGate() {
     setOpen(!hasPassed());
   }, []);
 
-  // The eye follows you before you're let in.
+  // The room drifts behind the gate — you can see it before you're let in.
   useEffect(() => {
     if (!open) return;
     const el = eyeRef.current;
@@ -81,21 +81,13 @@ export default function DoorGate() {
     >
       <div
         ref={eyeRef}
-        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.55] transition-transform duration-500 ease-out"
-        style={{ backgroundImage: "url(/images/eye.webp)" }}
+        className="pointer-events-none absolute inset-0 bg-[url('/images/crowd.webp')] bg-cover bg-center opacity-[0.55] transition-transform duration-500 ease-out md:bg-[url('/images/crowd-wide.webp')]"
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/85" aria-hidden />
 
       <div className="relative w-full max-w-md px-7 text-center">
-        <Image
-          src="/images/wordmark-cut.webp"
-          alt="Discotecha"
-          width={471}
-          height={127}
-          priority
-          className="mx-auto mb-10 h-auto w-56"
-        />
+        <Wordmark className="mx-auto mb-10 h-auto w-56" />
 
         <p className="mb-1 text-[10px] font-semibold uppercase tracking-door text-signal">
           Members &amp; guests only
@@ -163,7 +155,7 @@ export default function DoorGate() {
         </p>
 
         <p className="mt-10 text-[9px] uppercase tracking-[0.2em] text-ash">
-          Paros · Cyclades · Right of admission reserved
+          Ios · Cyclades · Right of admission reserved
         </p>
       </div>
     </div>

@@ -10,8 +10,8 @@ const CATEGORIES = [
     always: true,
     body: "These keep the site working and cannot be switched off. They remember that you passed the age gate, carry your reservation through checkout, and protect the forms from abuse. No consent is required for these, and they store no marketing data.",
     items: [
-      ["dsc_door", "Remembers you confirmed you are 21 or over.", "180 days"],
-      ["dsc_cookie_consent", "Stores your cookie choices so we don't ask again.", "Local, until cleared"],
+      ["club_door", "Remembers you confirmed you are 21 or over.", "180 days"],
+      ["club_cookie_consent", "Stores your cookie choices so we don't ask again.", "Local, until cleared"],
       ["Stripe", "Set on the checkout page to process your deposit securely.", "Session / per Stripe"],
     ],
   },
@@ -95,16 +95,11 @@ export default function CookiePolicyPage() {
         </div>
 
         <p className="mt-16 max-w-2xl text-[11px] leading-relaxed text-ash">
-          Questions about your data? Reach us on{" "}
-          <a
-            href="https://wa.me/306942601351"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-bone underline underline-offset-2 hover:text-signal"
-          >
-            WhatsApp
+          Questions about your data? Call us on{" "}
+          <a href="tel:+302286000000" className="text-bone underline underline-offset-2 hover:text-signal">
+            +30 22860 00000
           </a>{" "}
-          or by phone. Discotecha · Paros, Cyclades.
+          or ask at the door. Nocturne · Chora, Ios 840 01, Cyclades.
         </p>
       </main>
       <Footer />

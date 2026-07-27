@@ -7,34 +7,25 @@ export type ClubEvent = {
 };
 
 // The whole season lives here. Edit this array, the site follows.
+// Every name below is invented for the template. Swap in the real bookings.
 export const EVENTS: ClubEvent[] = [
-  { date: "2026-07-10", artists: "DA MIKE", tag: "OPENING" },
-  { date: "2026-07-11", artists: "THODORIS TRIANTAFILLOU" },
-  { date: "2026-07-12", artists: "ALEX PM" },
-  {
-    date: "2026-07-17",
-    artists: "INNASSI & METAXXA",
-    support: "AVATOS",
-    poster: "/images/flyer-innassi.webp",
-  },
-  { date: "2026-07-18", artists: "NICO RAC & LUC" },
-  { date: "2026-07-19", artists: "USELESS CO & ZORZ POOL" },
-  {
-    date: "2026-07-24",
-    artists: "ECHONOMIST & ALEX PM",
-    support: "AVATOS",
-    poster: "/images/flyer-echonomist.webp",
-  },
-  { date: "2026-07-25", artists: "LOUIE DIMÁ & LUC" },
-  { date: "2026-07-26", artists: "MANWITHTHESPEAKER & OKÁLO" },
-  { date: "2026-07-31", artists: "BRB" },
-  { date: "2026-08-01", artists: "DA MIKE" },
-  { date: "2026-08-02", artists: "LE CROQUE" },
-  { date: "2026-08-07", artists: "LOUIE DIMÁ & LUC" },
-  { date: "2026-08-08", artists: "REIGN OF TIME & PEN." },
-  { date: "2026-08-09", artists: "LEX (ATHENS) & G.FAMELIARIS" },
-  { date: "2026-08-14", artists: "NIVK JANE B2B AVATOS" },
-  { date: "2026-08-15", artists: "ALEX PM", tag: "CLOSING" },
+  { date: "2026-07-10", artists: "KID ORFEO", tag: "OPENING" },
+  { date: "2026-07-11", artists: "STAVROS KALANTZIS" },
+  { date: "2026-07-12", artists: "ARIS DM" },
+  { date: "2026-07-17", artists: "VELISSA & MASTIHA", support: "ANEMOS" },
+  { date: "2026-07-18", artists: "MARCO REV & VELO" },
+  { date: "2026-07-19", artists: "IDLE CO & ZAZA POOL" },
+  { date: "2026-07-24", artists: "SONOMIST & ARIS DM", support: "ANEMOS" },
+  { date: "2026-07-25", artists: "TOMMY DELÁ & VELO" },
+  { date: "2026-07-26", artists: "KIDWITHTHEKEYS & OKTÁVO" },
+  { date: "2026-07-31", artists: "IRL" },
+  { date: "2026-08-01", artists: "KID ORFEO" },
+  { date: "2026-08-02", artists: "LE MARQUIS" },
+  { date: "2026-08-07", artists: "TOMMY DELÁ & VELO" },
+  { date: "2026-08-08", artists: "ORDER OF HOURS & INK." },
+  { date: "2026-08-09", artists: "VEX (ATHENS) & N.STAVERIS" },
+  { date: "2026-08-14", artists: "NIKA VANE B2B ANEMOS" },
+  { date: "2026-08-15", artists: "ARIS DM", tag: "CLOSING" },
 ];
 
 const DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];

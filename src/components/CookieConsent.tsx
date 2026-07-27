@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const STORAGE_KEY = "dsc_cookie_consent";
+const STORAGE_KEY = "club_cookie_consent";
 
 type Consent = {
   necessary: true;

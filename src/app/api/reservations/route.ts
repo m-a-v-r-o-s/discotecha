@@ -105,7 +105,7 @@ export async function POST(req: Request) {
             currency: "eur",
             unit_amount: tier.deposit * 100,
             product_data: {
-              name: `Discotecha · ${tier.name}`,
+              name: `Nocturne · ${tier.name}`,
               description: `${reservation.eventDate} · ${event.artists}. Deposit is credited against a €${tier.minimumSpend} minimum spend.`,
             },
           },

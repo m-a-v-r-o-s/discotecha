@@ -6,21 +6,27 @@ import CookieConsent from "@/components/CookieConsent";
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
   title: {
-    default: "Discotecha · Paros",
-    template: "%s · Discotecha",
+    default: "Nocturne · Ios",
+    template: "%s · Nocturne",
   },
   description:
-    "A private 21+ nightclub on Paros. Members and guests only. Reserve a table or request the guest list.",
+    "A private 21+ nightclub on Ios. Members and guests only. Reserve a table or request the guest list.",
   openGraph: {
-    title: "Discotecha · Paros",
-    description: "No matter the question, Paros is always the answer. 21+. Members and guests only.",
-    images: ["/images/eye.webp"],
+    title: "Nocturne · Ios",
+    description: "No matter the question, Ios is always the answer. 21+. Members and guests only.",
+    images: ["/images/crowd-wide.webp"],
     type: "website",
   },
   robots: { index: true, follow: true },
+  // Served under moon.* rather than favicon.* on purpose: browsers cache a
+  // favicon by URL and hold it well past a hard refresh, so a changed icon
+  // needs a changed path to be picked up.
   icons: {
-    icon: "/images/favicon.ico",
-    shortcut: "/images/favicon.ico",
+    icon: [
+      { url: "/images/moon.svg", type: "image/svg+xml" },
+      { url: "/images/moon.ico", sizes: "16x16 32x32 48x48 64x64 128x128 256x256" },
+    ],
+    shortcut: "/images/moon.ico",
   },
 };
 
@@ -35,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Bagel+Fat+One&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Bungee&display=swap"
           rel="stylesheet"
         />
       </head>

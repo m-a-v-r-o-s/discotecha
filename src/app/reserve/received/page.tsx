@@ -90,17 +90,15 @@ export default async function ReceivedPage({
 
           <p className="mt-8 text-[10px] uppercase tracking-[0.14em] text-ash">
             Give the reference at the door. Screenshot it, the signal is bad down there.
+            <br />
+            Need to change it? Call{" "}
+            <a href="tel:+302286000000" className="text-bone transition-colors hover:text-signal">
+              +30 22860 00000
+            </a>
+            .
           </p>
 
           <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-            <a
-              href="https://wa.me/306942601351"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-bone/25 px-8 py-4 text-center text-[11px] font-semibold uppercase tracking-door text-bone transition-colors hover:border-signal hover:text-signal"
-            >
-              Message the door
-            </a>
             <Link
               href="/"
               className="border border-bone/25 px-8 py-4 text-center text-[11px] font-semibold uppercase tracking-door text-bone transition-colors hover:border-bone"

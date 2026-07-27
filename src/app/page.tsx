@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import LineupLedger from "@/components/LineupLedger";
+import LightRays from "@/components/LightRays";
 import { TIERS } from "@/lib/tiers";
 
 const RULES = [
@@ -27,14 +28,15 @@ const RULES = [
 ];
 
 const ROOM = [
-  { src: "/images/neon-stairs.webp", alt: "The stairs down into the club, lit in red" },
-  { src: "/images/red-sun.webp", alt: "A dancer silhouetted against a red light disc" },
-  { src: "/images/red-bar.webp", alt: "Bar stools against a red-lit wall" },
+  { src: "/images/neon-steps.webp", alt: "Red neon strips over the steps down to the floor" },
+  { src: "/images/red-floor.webp", alt: "Hands up in the red haze of the dance floor" },
+  { src: "/images/neon-bar.webp", alt: "Neon tubes burning red behind the bar" },
 ];
 
 export default function Home() {
   return (
     <>
+      <LightRays />
       <Header />
       <main>
         <Hero />
@@ -44,8 +46,8 @@ export default function Home() {
           <Reveal>
             <div className="relative aspect-[3/4] overflow-hidden">
               <Image
-                src="/images/window-couple.webp"
-                alt="Two people in a shuttered window in the Cyclades"
+                src="/images/red-window.webp"
+                alt="A red-shuttered window in a whitewashed island wall"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="plate object-cover"
@@ -67,7 +69,7 @@ export default function Home() {
             </h2>
             <div className="max-w-md space-y-5 text-[14px] leading-relaxed text-bone/60">
               <p>
-                Discotecha holds a few hundred people, three nights a week, from the end of June
+                Nocturne holds a few hundred people, three nights a week, from the end of June
                 until the island empties out. The floor is the point. Everything else (the bar, the
                 booths) exists to keep the floor moving.
               </p>
@@ -92,7 +94,7 @@ export default function Home() {
               <div className="mb-14 flex items-end justify-between">
                 <div>
                   <p className="mb-4 text-[9px] font-semibold uppercase tracking-door text-signal">
-                    Discotecha sounds
+                    Nocturne sounds
                   </p>
                   <h2 className="text-[40px] font-extrabold uppercase leading-none tracking-tightest text-signal md:text-[64px]">
                     Line up
@@ -252,16 +254,12 @@ export default function Home() {
         </section>
 
         {/* ── Closing ───────────────────────────────────────────── */}
-        <section className="relative overflow-hidden border-t border-bone/10">
-          <Image
-            src="/images/wordmark-gradient.webp"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover opacity-40"
+        <section className="relative overflow-hidden border-t border-bone/10 bg-pitch">
+          <div
+            className="absolute inset-0 bg-[url('/images/press-crowd.webp')] bg-cover bg-center"
             aria-hidden
           />
-          <div className="absolute inset-0 bg-ink/50" aria-hidden />
+          <div className="absolute inset-0 bg-ink/70" aria-hidden />
           <div className="relative mx-auto max-w-[1400px] px-6 py-28 text-center md:px-10 md:py-40">
             <Reveal>
               <h2 className="mx-auto max-w-3xl text-[32px] font-extrabold uppercase leading-[0.95] tracking-tightest text-bone md:text-[58px]">

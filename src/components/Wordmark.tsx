@@ -8,13 +8,13 @@ type Props = {
  * The wordmark is never set as flat text; it always rides an arc,
  * the way it does on the posters.
  */
-export default function Wordmark({ className = "", fontSize = 74, color = "#FF2A00" }: Props) {
+export default function Wordmark({ className = "", fontSize = 80, color = "#FF2A00" }: Props) {
   return (
     <svg
       viewBox="0 0 900 210"
       className={className}
       role="img"
-      aria-label="Discotecha"
+      aria-label="Nocturne"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
@@ -22,12 +22,12 @@ export default function Wordmark({ className = "", fontSize = 74, color = "#FF2A
       </defs>
       <text
         fill={color}
-        fontFamily="'Bagel Fat One', cursive"
+        fontFamily="'Bungee', sans-serif"
         fontSize={fontSize}
-        letterSpacing="2"
+        letterSpacing="4"
       >
         <textPath href="#arc" startOffset="50%" textAnchor="middle">
-          DISCOTECHA
+          NOCTURNE
         </textPath>
       </text>
     </svg>

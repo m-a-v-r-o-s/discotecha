@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import Wordmark from "./Wordmark";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -30,14 +30,7 @@ export default function AdminLogin() {
   return (
     <div className="flex min-h-screen items-center justify-center px-6">
       <div className="w-full max-w-sm text-center">
-        <Image
-          src="/images/wordmark-cut.webp"
-          alt="Discotecha"
-          width={471}
-          height={127}
-          priority
-          className="mx-auto mb-10 h-auto w-44"
-        />
+        <Wordmark className="mx-auto mb-10 h-auto w-44" />
         <p className="mb-8 text-[9px] font-semibold uppercase tracking-door text-signal">
           Staff only
         </p>

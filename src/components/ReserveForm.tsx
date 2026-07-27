@@ -75,7 +75,7 @@ export default function ReserveForm({
       }
       router.push(`/reserve/received?ref=${data.reference}`);
     } catch {
-      setError("The line dropped. Try again, or message us on WhatsApp.");
+      setError("The line dropped. Try again in a moment.");
       setBusy(false);
     }
   }
@@ -240,7 +240,7 @@ export default function ReserveForm({
             <input
               className="field"
               type="tel"
-              placeholder="Phone (WhatsApp)"
+              placeholder="Phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               aria-label="Phone"
@@ -303,14 +303,9 @@ export default function ReserveForm({
             <li>No phones on the floor.</li>
           </ul>
 
-          <a
-            href="https://wa.me/306942601351"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-7 block border-t border-bone/15 pt-6 text-[10px] font-semibold uppercase tracking-door text-bone transition-colors hover:text-signal"
-          >
-            Rather just message us? →
-          </a>
+          <p className="mt-7 border-t border-bone/15 pt-6 text-[10px] font-semibold uppercase tracking-door text-ash">
+            We answer every request the same day.
+          </p>
         </div>
       </aside>
     </div>

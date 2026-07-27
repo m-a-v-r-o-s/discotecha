@@ -13,7 +13,7 @@ const config: Config = {
         ember: "#8E1500",
       },
       fontFamily: {
-        display: ["'Bagel Fat One'", "cursive"],
+        display: ["Bungee", "sans-serif"],
         sans: ["Archivo", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
       },
       letterSpacing: {

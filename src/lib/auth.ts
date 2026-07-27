@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 
-export const ADMIN_COOKIE = "dsc_admin";
-export const AGE_COOKIE = "dsc_door";
+export const ADMIN_COOKIE = "club_admin";
+export const AGE_COOKIE = "club_door";
 
 function token() {
   return Buffer.from(`admin:${process.env.ADMIN_PASSWORD || "changeme"}`).toString("base64");

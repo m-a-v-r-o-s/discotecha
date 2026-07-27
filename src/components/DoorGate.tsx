@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Wordmark from "./Wordmark";
+import Logo from "./Logo";
 
 const COOKIE = "club_door";
 const MIN_AGE = 21;
@@ -87,7 +87,7 @@ export default function DoorGate() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/85" aria-hidden />
 
       <div className="relative w-full max-w-md px-7 text-center">
-        <Wordmark className="mx-auto mb-10 h-auto w-56" />
+        <Logo className="mx-auto mb-10 h-auto w-72" />
 
         <p className="mb-1 text-[10px] font-semibold uppercase tracking-door text-signal">
           Members &amp; guests only

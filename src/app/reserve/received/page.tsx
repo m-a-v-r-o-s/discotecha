@@ -51,7 +51,7 @@ export default async function ReceivedPage({
       <main className="mx-auto max-w-[1400px] px-6 pb-28 pt-36 md:px-10 md:pt-44">
         <div className="max-w-2xl">
           <p className="mb-4 text-[9px] font-semibold uppercase tracking-door text-signal">
-            {confirmed ? "You're in" : "Received"}
+            {confirmed ? "You’re in" : "Received"}
           </p>
           <h1 className="mb-7 text-[38px] font-extrabold uppercase leading-[0.9] tracking-tightest text-bone md:text-[64px]">
             {confirmed ? "The table is held." : "We have your name."}
@@ -60,8 +60,8 @@ export default async function ReceivedPage({
             {confirmed
               ? "The address and the door instructions are on their way to your phone. Bring ID."
               : isTable
-                ? "As soon as the deposit clears we'll confirm and send you the address."
-                : "Guest list is decided closer to the night. We'll message you either way, usually the same day."}
+                ? "As soon as the deposit clears we’ll confirm and send you the address."
+                : "Guest list is decided closer to the night. We’ll message you either way, usually the same day."}
           </p>
 
           <dl className="grid gap-px border border-bone/15 bg-bone/15 sm:grid-cols-2">

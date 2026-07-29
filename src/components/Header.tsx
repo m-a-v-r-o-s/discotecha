@@ -41,7 +41,7 @@ export default function Header() {
             <Link
               key={n.href}
               href={n.href}
-              className="text-[10px] font-semibold uppercase tracking-door text-bone/70 transition-colors hover:text-signal"
+              className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-door text-bone/70 transition-colors hover:text-signal"
             >
               {n.label}
             </Link>
@@ -55,12 +55,12 @@ export default function Header() {
           aria-expanded={open}
         >
           <span
-            className={`block h-[1.5px] bg-bone transition-all duration-300 ${
+            className={`block h-[1.5px] bg-bone transition-[transform,width] duration-300 ${
               open ? "w-6 translate-y-[6.5px] rotate-45" : "w-6"
             }`}
           />
           <span
-            className={`block h-[1.5px] bg-bone transition-all duration-300 ${
+            className={`block h-[1.5px] bg-bone transition-[transform,width] duration-300 ${
               open ? "w-6 -translate-y-[6.5px] -rotate-45" : "w-4"
             }`}
           />

@@ -10,8 +10,8 @@ import { scatter } from "@/lib/discoScatter";
  * the polar axis with the equator centred, so no pole tips into view. No
  * textures, no dependencies.
  *
- * Every point the ball draws sits at a fixed (lat, lon) on the sphere — only
- * the spin angle changes between frames — so the unit-sphere coordinates and
+ * Every point the ball draws sits at a fixed (lat, lon) on the sphere and only
+ * the spin angle changes between frames, so the unit-sphere coordinates and
  * each facet's material are built once at module load and a frame does nothing
  * but rotate them. That's what keeps it to two trig calls and a dozen strokes
  * per frame instead of ~86,000 and ~2,500, which is the difference between
@@ -32,7 +32,7 @@ const LZN = 0.75 / LM;
 
 // A fake "environment" the mirror facets reflect: a handful of bright lobes in
 // view space. Each facet reflects them based on which way it faces, so glints
-// sweep across the tiles as the ball turns — matcap-style, no textures/libs.
+// sweep across the tiles as the ball turns, matcap-style, no textures/libs.
 type Env = { x: number; y: number; z: number; i: number; p: number };
 function dir(x: number, y: number, z: number, i: number, p: number): Env {
   const m = Math.hypot(x, y, z);
@@ -64,7 +64,7 @@ const CTILT = Math.cos(TILT);
 const STILT = Math.sin(TILT);
 
 const D2R = Math.PI / 180;
-const RING_N = 2; // edge samples per tile side — tiles are tiny at this density
+const RING_N = 2; // edge samples per tile side; tiles are tiny at this density
 const RING_PTS = 3 * RING_N + (RING_N - 1); // 8 points around one tile
 const PAR_PTS = 61; // a parallel, sampled every 6°
 const MER_PTS = 37; // a meridian, sampled every 5°
@@ -104,7 +104,7 @@ for (let i = 0; i < BANDS; i++) {
   const latc = (latA + latB) / 2;
   if (latc > 22.5) BAND_REGION[i] = 0.86; // upper zone
   else if (latc < -22.5) BAND_GRADED[i] = 1; // lower zone
-  else BAND_REGION[i] = 1.12; // middle zone — brightest
+  else BAND_REGION[i] = 1.12; // middle zone, brightest
 
   for (let j = 0; j < MERID; j++) {
     const lonA = (j * 360) / MERID;
@@ -179,7 +179,7 @@ export default function Globe3D({ className = "" }: { className?: string }) {
 
     const resize = () => {
       // a 160px ball gains nothing from 2.6x oversampling, and the buffer is
-      // filled several times over per frame — capping it is the cheapest win
+      // filled several times over per frame, so capping it is the cheapest win
       // available on a high-density phone screen
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
@@ -386,7 +386,7 @@ export default function Globe3D({ className = "" }: { className?: string }) {
     let lastFrame = 0;
     let running = false;
     // the idle spin used to keep turning at 60fps behind whatever you'd
-    // scrolled to, and in a background tab — nothing to look at, full price
+    // scrolled to, and in a background tab: nothing to look at, full price
     let onScreen = true;
     let awake = true;
     const live = () => onScreen && awake;

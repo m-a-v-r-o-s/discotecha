@@ -1,35 +1,55 @@
+/* Hallmark · macrostructure: Photographic · genre: atmospheric
+ * tone: nocturnal / brutalist-poster · anchor hue: signal red (25°)
+ * paper: warm near-black · display: Bungee · body: Archivo
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --signal: #ff2a00;
-  --bone: #edeae4;
+  /* Channel triplets so Tailwind's <alpha-value> can ride them. The room is
+     lit red, so the black is a warm black, not #000: a pure black surface
+     under a red light reads as a screenshot, not a room. */
+  --ink: 10 7 5;
+  --pitch: 21 17 13;
+  --bone: 237 234 228;
+  --ash: 138 132 124;
+  --signal: 255 42 0;
+  --ember: 142 21 0;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
+html,
+body {
+  /* clip, never hidden: overflow-x:hidden makes the body a scroll container
+     and silently kills position:sticky in every descendant. */
+  overflow-x: clip;
+}
+
 html {
   scroll-behavior: smooth;
-  background: #000;
+  background: rgb(var(--ink));
 }
 
 body {
-  background: #000;
-  color: var(--bone);
-  font-feature-settings: "ss01", "cv01";
-  overflow-x: hidden;
+  background: rgb(var(--ink));
+  color: rgb(var(--bone));
 }
 
 ::selection {
-  background: var(--signal);
-  color: #000;
+  background: rgb(var(--signal));
+  color: rgb(var(--ink));
 }
 
 :focus-visible {
-  outline: 2px solid var(--signal);
+  outline: 2px solid rgb(var(--signal));
   outline-offset: 3px;
 }
 
@@ -38,7 +58,7 @@ body {
   content: "";
   position: fixed;
   /* The shift below only travels 2% of this layer, so the overscan only has to
-     cover that — at -50% the phone was holding a grain layer four times the
+     cover that. At -50% the phone was holding a grain layer four times the
      area of the screen. */
   inset: -6%;
   z-index: 60;
@@ -59,7 +79,7 @@ body {
 /* ── Photography treatment: monochrome, crushed blacks ─────────── */
 .plate {
   filter: grayscale(1) contrast(1.18) brightness(0.86);
-  transition: filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: filter 900ms var(--ease-out);
 }
 
 .plate-hot {
@@ -82,6 +102,12 @@ body {
   animation: slide 38s linear infinite;
 }
 
+/* WCAG 2.2.2: moving content that runs past five seconds needs a stop. */
+.ticker:hover,
+.ticker:focus-within {
+  animation-play-state: paused;
+}
+
 @keyframes slide {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -91,8 +117,7 @@ body {
 .reveal {
   opacity: 0;
   transform: translateY(22px);
-  transition: opacity 1000ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1000ms var(--ease-out), transform 1000ms var(--ease-out);
 }
 
 .reveal.seen {
@@ -105,26 +130,33 @@ body {
   width: 100%;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid rgba(237, 234, 228, 0.22);
+  border-bottom: 1px solid rgb(var(--bone) / 0.22);
   padding: 12px 0;
-  color: var(--bone);
+  color: rgb(var(--bone));
   font-size: 15px;
   letter-spacing: 0.02em;
-  transition: border-color 300ms ease;
+  transition: border-color 200ms var(--ease-out);
 }
 
 .field::placeholder {
-  color: rgba(237, 234, 228, 0.3);
+  /* These carry the field's only visible label, so they clear 4.5:1. */
+  color: rgb(var(--bone) / 0.5);
 }
 
-.field:focus {
+/* The indicator doubles the rule with a shadow rather than a thicker border
+   (no layout shift) and lands instantly: a focus ring that fades in leaves a
+   keyboard user with nothing to look at for the length of the fade. */
+.field:focus,
+.field:focus-visible {
   outline: none;
-  border-bottom-color: var(--signal);
+  border-bottom-color: rgb(var(--signal));
+  box-shadow: 0 1px 0 0 rgb(var(--signal));
+  transition: none;
 }
 
 select.field option {
-  background: #000;
-  color: var(--bone);
+  background: rgb(var(--ink));
+  color: rgb(var(--bone));
 }
 
 textarea.field {

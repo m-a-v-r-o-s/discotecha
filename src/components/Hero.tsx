@@ -18,7 +18,7 @@ export default function Hero() {
         className="absolute inset-0 bg-[url('/images/crowd.webp')] bg-cover bg-center md:bg-[url('/images/crowd-wide.webp')]"
         aria-hidden
       />
-      {/* This frame is busy edge to edge — no dark field of its own — so the
+      {/* This frame is busy edge to edge, with no dark field of its own, so the
           scrim has to build the type's field: heavy left, easing off to the
           right where the crowd stays legible. */}
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/35" aria-hidden />
@@ -29,19 +29,19 @@ export default function Hero() {
 
       <div className="relative z-40 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-6 pb-14 md:px-10 md:pb-12">
         {/* The mirror ball hangs from the ceiling on a cable that starts at the
-            very top of the page — the container carries no top padding, and the
-            ball is the first thing in it. Kept in flow rather than absolute:
-            on a short laptop an absolute ball punches straight through the
-            headline, whereas in flow the stack below simply moves down.
+            very top of the page: the container carries no top padding, and the
+            ball is the first thing in it. Kept in flow rather than absolute,
+            because on a short laptop an absolute ball punches straight through
+            the headline, whereas in flow the stack below simply moves down.
             At lg the box is the header logo's own width, so centring inside it
-            drops the ball on the logo's centre line. Only the cable is inert —
-            the ball itself has to stay grabbable. */}
+            drops the ball on the logo's centre line. Only the cable is inert.
+            The ball itself has to stay grabbable. */}
         <div
           className="flex w-full animate-rise flex-col items-center opacity-0 lg:w-44"
           style={{ animationDelay: "200ms" }}
         >
           {/* Cable length is the ball's drop. It lengthens only when the
-              viewport is tall enough to spend the pixels — on a short laptop
+              viewport is tall enough to spend the pixels; on a short laptop
               the whole stack is already fighting for room. */}
           <span
             className="pointer-events-none h-32 w-px bg-bone/20 lg:h-12 lg:[@media(min-height:860px)]:h-28"
@@ -53,7 +53,7 @@ export default function Hero() {
         {/* Everything else sinks to the floor of the frame */}
         <div className="flex-1" />
 
-        {/* The kicker belongs with the headline, in the black column — the
+        {/* The kicker belongs with the headline, in the black column. The
             top-right corner is where the light shaft blows out. */}
         <p
           className="mb-6 mt-6 animate-rise text-center text-[10px] font-semibold uppercase tracking-door text-signal opacity-0 md:text-left"
@@ -83,14 +83,14 @@ export default function Hero() {
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center md:gap-7">
             {next && (
-              <span className="text-[10px] font-semibold uppercase tracking-door text-bone/50">
+              <span className="text-[10px] font-semibold uppercase tabular-nums tracking-door text-bone/65">
                 Next · {formatDate(next.date).long} ·{" "}
                 <span className="text-bone">{next.artists}</span>
               </span>
             )}
             <Link
               href="/reserve"
-              className="border border-signal bg-signal px-10 py-4 text-[11px] font-extrabold uppercase tracking-door text-ink transition-colors duration-300 hover:bg-transparent hover:text-signal"
+              className="whitespace-nowrap border border-signal bg-signal px-10 py-4 text-[11px] font-extrabold uppercase tracking-door text-ink transition-colors duration-300 hover:bg-transparent hover:text-signal"
             >
               Reserve
             </Link>

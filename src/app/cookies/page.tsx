@@ -11,14 +11,14 @@ const CATEGORIES = [
     body: "These keep the site working and cannot be switched off. They remember that you passed the age gate, carry your reservation through checkout, and protect the forms from abuse. No consent is required for these, and they store no marketing data.",
     items: [
       ["club_door", "Remembers you confirmed you are 21 or over.", "180 days"],
-      ["club_cookie_consent", "Stores your cookie choices so we don't ask again.", "Local, until cleared"],
+      ["club_cookie_consent", "Stores your cookie choices so we don’t ask again.", "Local, until cleared"],
       ["Stripe", "Set on the checkout page to process your deposit securely.", "Session / per Stripe"],
     ],
   },
   {
     name: "Analytics",
     always: false,
-    body: "Optional. With your consent we measure how the site is used — pages visited, rough device and country — in aggregate, so we can improve it. Off unless you opt in.",
+    body: "Optional. With your consent we measure how the site is used (pages visited, rough device and country) in aggregate, so we can improve it. Off unless you opt in.",
     items: [],
   },
   {
@@ -47,7 +47,7 @@ export default function CookiePolicyPage() {
             Cookies are small files a site stores on your device. Under the GDPR and the ePrivacy
             rules we only set non-essential cookies after you agree to them. You choose from the
             banner at the bottom of the site, and you can change your mind any time by clearing this
-            site&apos;s data in your browser, which brings the banner back.
+            site’s data in your browser, which brings the banner back.
           </p>
         </div>
 

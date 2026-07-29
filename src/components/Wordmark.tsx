@@ -8,7 +8,11 @@ type Props = {
  * The wordmark is never set as flat text; it always rides an arc,
  * the way it does on the posters.
  */
-export default function Wordmark({ className = "", fontSize = 80, color = "#FF2A00" }: Props) {
+export default function Wordmark({
+  className = "",
+  fontSize = 80,
+  color = "rgb(var(--signal))",
+}: Props) {
   return (
     <svg
       viewBox="0 0 900 210"

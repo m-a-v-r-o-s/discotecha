@@ -27,8 +27,8 @@ export default async function ReservePage({
             name down
           </h1>
           <p className="max-w-md text-[13px] leading-relaxed text-bone/55">
-            Two ways in. Take a table and it&apos;s yours the moment the deposit clears. Ask for the
-            guest list and we&apos;ll come back to you by message.
+            Two ways in. Take a table and it’s yours the moment the deposit clears. Ask for the
+            guest list and we’ll come back to you by message.
           </p>
         </div>
 

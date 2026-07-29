@@ -6,7 +6,7 @@ export type DiscoScatter = {
   cx: number; // ball centre, viewport px
   cy: number;
   spin: number; // ball rotation angle (rad)
-  energy: number; // 0..1 spin boost above idle — drives the whole effect
+  energy: number; // 0..1 spin boost above idle; drives the whole effect
   wake: (() => void) | null; // LightRays registers this; the ball kicks it awake
 };
 

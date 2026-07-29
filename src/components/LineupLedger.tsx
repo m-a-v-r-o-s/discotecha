@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 import { EVENTS, formatDate, type ClubEvent } from "@/lib/events";
 
 /**
@@ -11,8 +8,14 @@ import { EVENTS, formatDate, type ClubEvent } from "@/lib/events";
  */
 const OFFSETS = ["ml-0", "ml-[14%]", "ml-[6%]", "ml-[22%]", "ml-[2%]", "ml-[16%]"];
 
+/**
+ * Hover and focus are carried by CSS group state rather than React state: a
+ * pointer-only `onMouseEnter` left keyboard users with no way to see which
+ * row they were on, and re-rendered the whole season on every mouse move.
+ * The leader rule is a desktop device. On a phone a long booking (three
+ * names and an ampersand) needs the width the rule was eating.
+ */
 export default function LineupLedger({ events = EVENTS }: { events?: ClubEvent[] }) {
-  const [hot, setHot] = useState<string | null>(null);
   const today = new Date().toISOString().slice(0, 10);
 
   return (
@@ -20,47 +23,56 @@ export default function LineupLedger({ events = EVENTS }: { events?: ClubEvent[]
       {events.map((e, i) => {
         const d = formatDate(e.date);
         const past = e.date < today;
-        const active = hot === e.date;
+        const indent = OFFSETS[i % OFFSETS.length];
 
-        return (
-          <Link
-            key={e.date}
-            href={past ? "#lineup" : `/reserve?date=${e.date}`}
-            onMouseEnter={() => setHot(e.date)}
-            onMouseLeave={() => setHot(null)}
-            aria-disabled={past}
-            tabIndex={past ? -1 : 0}
-            className={`group flex items-center gap-4 py-3 transition-colors duration-300 ${
-              OFFSETS[i % OFFSETS.length]
-            } ${past ? "pointer-events-none opacity-25" : ""} ${
-              active ? "text-signal" : "text-bone"
-            }`}
-          >
-            <span className="flex shrink-0 items-baseline gap-2 md:gap-3">
-              <span className="text-[15px] font-extrabold uppercase leading-none tracking-tightest md:text-[26px]">
+        const row = (
+          <>
+            <span className="flex min-w-0 items-baseline gap-2 md:gap-3">
+              <span className="text-[15px] font-extrabold uppercase leading-tight tracking-tightest [overflow-wrap:anywhere] md:text-[26px]">
                 {e.artists}
               </span>
               {e.tag && (
-                <span className="hidden text-[9px] font-semibold uppercase tracking-door text-signal sm:inline">
+                <span className="hidden shrink-0 text-[9px] font-semibold uppercase tracking-door text-signal sm:inline">
                   {e.tag}
                 </span>
               )}
             </span>
 
-            <span className="leader" aria-hidden />
+            <span className="leader hidden sm:block" aria-hidden />
 
-            <span className="flex shrink-0 items-center gap-3">
-              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-current md:text-[12px]">
+            <span className="ml-auto flex shrink-0 items-center gap-3 sm:ml-0">
+              <span className="text-[10px] font-medium uppercase tabular-nums tracking-[0.18em] text-current md:text-[12px]">
                 {d.day} {d.short}
               </span>
-              <span
-                className={`hidden w-[86px] text-right text-[9px] font-semibold uppercase tracking-door transition-opacity duration-300 md:inline ${
-                  active && !past ? "text-signal opacity-100" : "opacity-0"
-                }`}
-              >
-                Reserve →
-              </span>
+              {!past && (
+                <span
+                  aria-hidden
+                  className="hidden w-[86px] text-right text-[9px] font-semibold uppercase tracking-door opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 md:inline"
+                >
+                  Reserve →
+                </span>
+              )}
             </span>
+          </>
+        );
+
+        // A night that has been and gone is a record, not a destination, so it
+        // is rendered as one instead of a link that refuses to be clicked.
+        if (past) {
+          return (
+            <p key={e.date} className={`flex items-center gap-4 py-3 text-bone/35 ${indent}`}>
+              {row}
+            </p>
+          );
+        }
+
+        return (
+          <Link
+            key={e.date}
+            href={`/reserve?date=${e.date}`}
+            className={`group flex items-center gap-4 py-3 text-bone transition-colors duration-300 hover:text-signal focus-visible:text-signal ${indent}`}
+          >
+            {row}
           </Link>
         );
       })}

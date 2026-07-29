@@ -20,13 +20,20 @@ export default function DoorGate() {
   const [refused, setRefused] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const eyeRef = useRef<HTMLDivElement>(null);
+  const dayRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setMounted(true);
     setOpen(!hasPassed());
   }, []);
 
-  // The room drifts behind the gate — you can see it before you're let in.
+  // aria-modal="true" hides the rest of the document from assistive tech, so
+  // the gate has to take focus or a screen reader lands on nothing.
+  useEffect(() => {
+    if (open) dayRef.current?.focus();
+  }, [open]);
+
+  // The room drifts behind the gate: you can see it before you are let in.
   useEffect(() => {
     if (!open) return;
     const el = eyeRef.current;
@@ -92,14 +99,20 @@ export default function DoorGate() {
         <p className="mb-1 text-[10px] font-semibold uppercase tracking-door text-signal">
           Members &amp; guests only
         </p>
-        <h1 className="mb-8 text-[13px] font-medium uppercase leading-relaxed tracking-[0.14em] text-bone/70">
+        {/* Not an h1: the page behind the gate owns that, and a modal prompt
+            should not compete with it in the document outline. */}
+        <p className="mb-8 text-[13px] font-medium uppercase leading-relaxed tracking-[0.14em] text-bone/70">
           Twenty-one and over.
           <br />
           Give us your date of birth.
-        </h1>
+        </p>
 
-        <div className="mb-5 flex items-end gap-3">
+        <div
+          className="mb-5 flex items-end gap-3"
+          onKeyDown={(e) => e.key === "Enter" && enter()}
+        >
           <input
+            ref={dayRef}
             className="field text-center"
             inputMode="numeric"
             maxLength={2}
@@ -133,7 +146,6 @@ export default function DoorGate() {
               setYear(e.target.value.replace(/\D/g, ""));
               setRefused(false);
             }}
-            onKeyDown={(e) => e.key === "Enter" && enter()}
             aria-label="Year of birth"
           />
         </div>

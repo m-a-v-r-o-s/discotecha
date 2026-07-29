@@ -26,7 +26,7 @@ function writeConsent(analytics: boolean, marketing: boolean) {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
   } catch {
-    /* storage blocked — nothing to persist, banner will simply reappear */
+    /* storage blocked, nothing to persist; the banner will simply reappear */
   }
   // Let the rest of the app react (e.g. to load analytics only after opt-in).
   window.dispatchEvent(new CustomEvent("cookie-consent", { detail: consent }));
@@ -65,7 +65,7 @@ export default function CookieConsent() {
             <p className="text-[12px] leading-relaxed tracking-[0.04em] text-bone/70">
               We use strictly necessary cookies to run the door and your reservation. With your
               consent we also use optional cookies to understand how the site is used. You can accept
-              all, keep only what&apos;s necessary, or choose for yourself. Read more in our{" "}
+              all, keep only what’s necessary, or choose for yourself. Read more in our{" "}
               <a href="/cookies" className="text-bone underline underline-offset-2 hover:text-signal">
                 cookie policy
               </a>

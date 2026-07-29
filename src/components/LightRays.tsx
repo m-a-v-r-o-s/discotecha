@@ -14,7 +14,7 @@ const MAX_SPARKS = 80;
 // Every pixel of this overlay is a soft gradient laid down additively across
 // the whole viewport, twenty-odd layers deep, and the result is screen-blended
 // over the page each frame. That is all fill rate, and it scales with the
-// square of the sample ratio — at a phone's native 2.6x the lit state can't
+// square of the sample ratio, so at a phone's native 2.6x the lit state can't
 // hold 60fps. There is no detail in a gradient to lose, so it renders at CSS
 // resolution and lets the compositor scale it.
 const DPR_CAP = 1;
@@ -60,7 +60,7 @@ export default function LightRays() {
     // Size the buffer from the element's own box, never from window.innerWidth.
     // A canvas is a *replaced* element: positioned, with width:auto, it takes
     // its width from the intrinsic size (the width attribute) and the opposing
-    // inset is dropped, so `inset-0` on its own never stretches it — the box
+    // inset is dropped, so `inset-0` on its own never stretches it. The box
     // ends up innerWidth * dpr CSS px wide, anchored top-left. At dpr 1 that
     // equals the viewport and looks correct by accident; at dpr 2.625 the box
     // is 2.6x too wide, so the origin painted at cx * dpr lands past the right

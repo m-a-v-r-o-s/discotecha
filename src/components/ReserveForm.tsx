@@ -63,7 +63,7 @@ export default function ReserveForm({
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "That didn't go through. Try again.");
+        setError(data.error || "That didn’t go through. Try again.");
         setBusy(false);
         return;
       }
@@ -217,7 +217,7 @@ export default function ReserveForm({
         {/* Who */}
         <fieldset className="mb-12">
           <legend className="mb-5 text-[9px] font-semibold uppercase tracking-door text-signal">
-            Who&apos;s coming
+            Who’s coming
           </legend>
           <div className="grid gap-6 sm:grid-cols-2">
             <input
@@ -285,7 +285,7 @@ export default function ReserveForm({
 
         <p className="mt-5 text-[10px] uppercase leading-relaxed tracking-[0.12em] text-ash">
           {kind === "TABLE"
-            ? "The deposit comes off your minimum spend. Cancel more than 48 hours out and it's refunded."
+            ? "The deposit comes off your minimum spend. Cancel more than 48 hours out and it’s refunded."
             : "Guest list is a request, not a booking. We reply to every one, usually the same day."}
         </p>
       </div>
@@ -298,7 +298,7 @@ export default function ReserveForm({
           </h3>
           <ul className="space-y-4 text-[12px] leading-relaxed text-bone/55">
             <li>Everyone in the party is 21+ and carrying ID.</li>
-            <li>The address is sent to your phone once you&apos;re confirmed.</li>
+            <li>The address is sent to your phone once you’re confirmed.</li>
             <li>Doors 23:30. Tables held until 01:00, then released.</li>
             <li>No phones on the floor.</li>
           </ul>

@@ -22,12 +22,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Name, email and phone are all required." }, { status: 400 });
   }
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    return NextResponse.json({ error: "That email doesn't look right." }, { status: 400 });
+    return NextResponse.json({ error: "That email doesn’t look right." }, { status: 400 });
   }
 
   const event = findEvent(eventDate);
   if (!event) {
-    return NextResponse.json({ error: "We're not open that night." }, { status: 400 });
+    return NextResponse.json({ error: "We’re not open that night." }, { status: 400 });
   }
   if (event.date < new Date().toISOString().slice(0, 10)) {
     return NextResponse.json({ error: "That night has already happened." }, { status: 400 });
@@ -125,7 +125,7 @@ export async function POST(req: Request) {
   } catch (err) {
     console.error("stripe checkout failed", err);
     return NextResponse.json(
-      { reference: reservation.reference, error: "Payment couldn't open. We've kept your request." },
+      { reference: reservation.reference, error: "Payment couldn’t open. We’ve kept your request." },
       { status: 200 }
     );
   }

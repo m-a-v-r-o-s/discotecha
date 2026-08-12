@@ -2,7 +2,17 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export const metadata: Metadata = { title: "Cookie policy" };
+export const metadata: Metadata = {
+  title: "Cookie policy",
+  description:
+    "What cookies Nocturne sets, why, and how to change your choice: strictly necessary, analytics, and marketing.",
+  openGraph: {
+    title: "Cookie policy · Nocturne",
+    description: "What cookies Nocturne sets, why, and how to change your choice.",
+    type: "website",
+    url: "/cookies",
+  },
+};
 
 const CATEGORIES = [
   {

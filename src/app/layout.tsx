@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import DoorGate from "@/components/DoorGate";
 import CookieConsent from "@/components/CookieConsent";
+import Analytics from "@/components/Analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     description: "No matter the question, Ios is always the answer. 21+. Members and guests only.",
     images: ["/images/crowd-wide.webp"],
     type: "website",
+    url: "/",
   },
   robots: { index: true, follow: true },
   // Served under moon.* rather than favicon.* on purpose: browsers cache a
@@ -49,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <DoorGate />
         {children}
         <CookieConsent />
+        <Analytics />
       </body>
     </html>
   );

@@ -3,7 +3,18 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReserveForm from "@/components/ReserveForm";
 
-export const metadata: Metadata = { title: "Reserve" };
+export const metadata: Metadata = {
+  title: "Reserve",
+  description:
+    "Reserve a table on deposit or ask for the guest list at Nocturne, Ios. Pick a night, pick a way in, we reply the same day.",
+  openGraph: {
+    title: "Reserve · Nocturne",
+    description: "A table on deposit, or a name on the guest list. Pick a night on Ios.",
+    images: ["/images/crowd-wide.webp"],
+    type: "website",
+    url: "/reserve",
+  },
+};
 
 export default async function ReservePage({
   searchParams,

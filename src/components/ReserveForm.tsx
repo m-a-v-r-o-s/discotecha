@@ -40,6 +40,10 @@ export default function ReserveForm({
       setError("Name, email, phone and a night. We need all four.");
       return;
     }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) {
+      setError("That email doesn’t look right.");
+      return;
+    }
     setBusy(true);
 
     const payload = {

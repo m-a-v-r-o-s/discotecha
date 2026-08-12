@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from "react";
 
-const STORAGE_KEY = "club_cookie_consent";
+export const STORAGE_KEY = "club_cookie_consent";
 
-type Consent = {
+export type Consent = {
   necessary: true;
   analytics: boolean;
   marketing: boolean;
   ts: number;
 };
 
-function readConsent(): Consent | null {
+export function readConsent(): Consent | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);

@@ -5,7 +5,12 @@ import Footer from "@/components/Footer";
 import { prisma } from "@/lib/prisma";
 import { formatDate } from "@/lib/events";
 
-export const metadata: Metadata = { title: "Reservation" };
+export const metadata: Metadata = {
+  title: "Reservation",
+  description: "Your Nocturne reservation reference and confirmation status.",
+  // A per-guest receipt, not a page worth ranking or sharing.
+  robots: { index: false, follow: false },
+};
 export const dynamic = "force-dynamic";
 
 export default async function ReceivedPage({

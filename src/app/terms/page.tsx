@@ -79,16 +79,6 @@ export default function TermsPage() {
           </p>
         </div>
 
-        <div className="mb-16 max-w-2xl border border-signal/40 bg-signal/[0.06] p-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-signal">
-            Template, not legal advice
-          </p>
-          <p className="mt-2 text-[12px] leading-relaxed text-bone/60">
-            This is a genuinely-intended draft, not a substitute for a lawyer. Have it reviewed
-            against your actual policies and local consumer law before relying on it.
-          </p>
-        </div>
-
         <div className="space-y-14">
           {SECTIONS.map((s) => (
             <section key={s.head}>
